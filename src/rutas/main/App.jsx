@@ -84,7 +84,7 @@ const staticImages =  [
       <Title info="Momentos"/>
       <PhotoSlider photos={sliderImages} />
       <Title info="Aliados"/>
-      <InfiniteSlider photos={patrocinadores.map(patrocinador=>patrocinador[0])} fondo={"white"} Links={patrocinadores.map(patrocinador=>patrocinador[1])}/>
+      <InfiniteSlider photos={patrocinadores.map(patrocinador=>patrocinador[0])} fondo={"white"} />
       <Footer />
       
       

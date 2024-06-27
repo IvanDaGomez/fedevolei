@@ -15,7 +15,7 @@
 
   --usando3: #201816ff;
   --usando0:#f1f0f0ff;
-  --usando1:#3e6f50ff;
+  --usando1:rgb(180, 180, 180);
   --usando2:#f9ee20ff;
   --usando4:#600602ff;
 
@@ -136,7 +136,7 @@ a{
   width:100vw;
   /*background: linear-gradient(90deg, yellow 50%, blue 75%, red 100%);*/
   /*background: repeating-linear-gradient(60deg, white 0%, blue 10%, white 20%);*/
-  background: var(--usando1);
+  background: white;
   
   display: flex;
   justify-content: space-between;
@@ -144,12 +144,13 @@ a{
   color:white;
   padding:20px;
 }
-.antesIzq,.antesDer{
+.antesIzq,.antesDer, .antesCen{
   height:80%;
   display: flex;
   align-items: center;
   justify-content: center;
 }
+
 .antesCen img{
   height:200px;
 }
@@ -157,8 +158,16 @@ a{
   height:100%;
 }
 .antesImg{
-  height:15vh;
-  max-height: 100%;
+  width:15vh;
+  
+}
+@media only screen and (max-width:834px){
+  .antesImg{
+    width:50px;
+    
+
+
+  }
 }
 header{
   border-bottom: 2px solid var(--usando1);

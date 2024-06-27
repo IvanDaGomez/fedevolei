@@ -60,7 +60,7 @@ export default function Header() {
                 <a href="https://kleosatl.com/" target="_blank"><img className="antesImg" src="/patrocinador1.png" alt="" /></a>
                 
             </div>
-            <div className="antesCen"><img className='antesImg' src="/fedevolei.png" alt="" /></div>
+            <div className="antesCen"><img className='' src="/fedevolei.png" alt="" /></div>
             <div className="antesDer">
                 <a href="https://www.instagram.com/molten.colombia/?hl=en" target="_blank"><img className="antesImg" src="/patrocinador4.png" alt="" /></a>
             </div>

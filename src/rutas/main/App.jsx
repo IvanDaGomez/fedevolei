@@ -20,7 +20,7 @@ const [loading, setLoading] = useState(true);
 useEffect(() => {
   // Simular una llamada a API u otra acción asincrónica
   const loadData = async () => {
-    await new Promise(resolve => setTimeout(resolve, 1000));
+    document.addEventListener("DOMContentLoaded", ()=>setLoading(false))
     
     setLoading(false);
   };
@@ -35,33 +35,34 @@ else document.documentElement.style.overflowY= "scroll"
 
 //--------------------------------------------Slider Infinite------------------------------------
 //Funciona con unas 10 fotos sin agregar width fijos
-const sliderImages = [
-  "/lisanvolei1.jpg",
-  "/lisanvolei2.jpg",
-  "/lisanvolei3.jpg",
-  "/lisanvolei4.jpg",
-  "/lisanvolei1.jpg",
-  "/lisanvolei2.jpg",
-  "/lisanvolei3.jpg",
-  "/lisanvolei4.jpg"
+const patrocinadores = [
+  ["patrocinador1.png","https://kleosatl.com/"],
+  ["patrocinador2.png", "https://www.toyota.com.co/"],
+["patrocinador6.png", "https://www.mozzartbet.com/en"],
+  ["patrocinador4.png","https://www.instagram.com/molten.colombia/?hl=en"],
+  ["patrocinador5.png","https://www.fivb.com/"]
 ]
-const staticImages = [
-  "/equipo5.jpg",
-  "/equipo2.jpg",
-  "/playa5.jpg",
-  "/equipo6.jpg",
-  "/playa6.jpg",
-  "/equipo7.jpg",
-  "/playa1.jpg",
-  "/lisanvolei1.jpg",
-  "/playa2.jpg",
-  "/playa3.jpg",
-  "/lisanvolei3.jpg",
-  "/playa4.jpg",
-  "/equipo8.jpg",
-  "/playa5.jpg",
+const sliderImages = [
+  "fedevolei12.jpeg",
+  "fedevolei8.jpg",
+  "fedevolei13.jpeg",
+  "fedevolei14.jpeg",
+  "fedevolei9.jpeg",
+  "fedevolei15.jpeg"
   
+  
+]
 
+const staticImages =  [
+  "fedevolei0.jpg",
+  "fedevolei1.jpeg",
+  "fedevolei7.jpeg",
+  "fedevolei4.jpeg",
+  "fedevolei11.jpg",
+  "fedevolei5.jpeg",
+  "fedevolei2.jpeg",
+  "fedevolei3.jpeg",
+  "fedevolei10.jpeg"
 ]
 /*useEffect(()=>{
   document.querySelector(".image-list").style.gridTemplateColumns = `repeat(${staticImages.length},1fr)`
@@ -72,17 +73,18 @@ const staticImages = [
 
   return (
     <>
-    <hr className="space"/>
       {(loading) ? <Loading />:
       <>
       <Header />
       {/*<Intro />*/}
       <Intro />
       
-      <Title info="Noticias"/>
-      <InfiniteSlider photos={sliderImages}/>
       <Title info="Equipos"/>
-      <PhotoSlider photos={staticImages}/>
+      <InfiniteSlider photos={staticImages} fondo="transparent"/>
+      <Title info="Momentos"/>
+      <PhotoSlider photos={sliderImages} />
+      <Title info="Aliados"/>
+      <InfiniteSlider photos={patrocinadores.map(patrocinador=>patrocinador[0])} fondo={"white"} Links={patrocinadores.map(patrocinador=>patrocinador[1])}/>
       <Footer />
       
       

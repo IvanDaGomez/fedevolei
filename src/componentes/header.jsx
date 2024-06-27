@@ -1,101 +1,111 @@
-import {useEffect} from 'react';
+
 import { Link } from 'react-router-dom';
-export default function Header(){
-
-    useEffect(() => {
-
-//------------------------------------FUNCIONES PARA CAMBIAR COLOR EN LAS PALETAS-----------------------
-        const root = document.documentElement;
-
-        function setColorPalette(color) {
-            for (let i = 0; i < 6; i++) {
-                root.style.setProperty(`--usando${i}`, getComputedStyle(root).getPropertyValue(`--paleta${color}${i}`));
-            }
-            localStorage.setItem('color', color); // Update local storage
+export default function Header() {
+    const root = document.documentElement;
+    function setColorPalette(color) {
+        for (let i = 0; i < 5; i++) {
+            root.style.setProperty(`--usando${i}`, getComputedStyle(root).getPropertyValue(`--paleta${color}${i}`));
         }
-
-        // Load color from localStorage
-        const color = localStorage.getItem('color') || "i"; // Default color
-        setColorPalette(color);
-
-        // Color palette functionality
-        const paletaNeutra = document.querySelectorAll(".default");
-        const paletaFem = document.querySelectorAll(".femenino");
-        const paletaMasc = document.querySelectorAll(".masculino");
-
-        // Event listeners for color palette buttons
-        paletaNeutra.forEach(paleta=>paleta.addEventListener("click", () => setColorPalette("i")));
-        paletaFem.forEach(paleta=>paleta.addEventListener("click", () => setColorPalette("c")));
-        paletaMasc.forEach(paleta=>paleta.addEventListener("click", () => setColorPalette("n")));
-
-//----------------------------------------------------------------------------------------------------
-
-
-
-        return () => {
-            // Cleanup event listeners when the component unmounts
-            paletaNeutra.forEach(paleta=>paleta.removeEventListener("click", () => setColorPalette("c")));
-            paletaFem.forEach(paleta=>paleta.removeEventListener("click", () => setColorPalette("n")));
-            paletaMasc.forEach(paleta=>paleta.removeEventListener("click", () => setColorPalette("i")));
-        };
-    }, []);
-
-//--------------------------------TRES COMPONENTES SEPARADOS: TITULO CON IMAGEN--------------------------
-//-------------------------------INDICES Y FUNCIONES DE CAMBIO DE COLOR, USUARIO Y CARRITO---------------
-const abrirMenu = () => {
-    let menu = document.querySelector(".inhamburger");
-
-    if (menu.style.display === "none" || menu.style.display === "") {
-        menu.style.display = "flex";
-        menu.style.height = "0px";  // Ensure initial height is 0
-        menu.style.animationName = "agrandar";
-        menu.style.animationPlayState = "running";
-        menu.addEventListener("animationend", function handler() {
-            menu.style.animationPlayState = "paused";
-            menu.style.height = "calc(60vh + 7px)";  // Reset height if necessary
-            menu.removeEventListener("animationend", handler);  // Clean up event listener
-        });
-    } else {
-        menu.style.animationName = "reducir";
-        menu.style.animationPlayState = "running";
-        menu.addEventListener("animationend", function handler() {
-            menu.style.display = "none";
-            menu.style.height = "0px";  // Ensure height is reset
-            menu.removeEventListener("animationend", handler);  // Clean up event listener
-        });
-    }
-};
-
-    return <><header>
-        <div className="headerIzq">
-            <img src="/lisanvolei.png" alt="" />
-            {/*<h1>Lisanvolei</h1>*/}
-        </div>
         
-        <div className="indice headerCen desaparecer">
-            <Link to="/"><p>Inicio</p></Link>
-            <Link to="/news"><p>Noticias</p></Link>
-            <Link to=""><p>Equipos</p></Link>
-            <Link to=""><p>Contacto</p></Link>
+        localStorage.setItem('color', color); // Update local storage
+
+    }
+    let color = localStorage.getItem('color') || "Claro"; // Default color
+    setColorPalette(color);
+
+    const cambio =()=>{
+
+        if (color === "Claro") {
+            color="Oscuro";
+            document.querySelector(".moon").style.display = "block"
+            document.querySelector(".sun").style.display = "none"
+            setColorPalette("Oscuro");
+            
+        } else {
+            color="Claro"
+            document.querySelector(".moon").style.display = "none"
+            document.querySelector(".sun").style.display = "block"
+            setColorPalette("Claro") 
+            
+        }}
+
+    const abrirMenu = () => {
+        let menu = document.querySelector(".inhamburger");
+
+        if (menu.style.display === "none" || menu.style.display === "") {
+            menu.style.display = "flex";
+            menu.style.height = "0px";
+            menu.style.animationName = "agrandar";
+            menu.style.animationPlayState = "running";
+            menu.addEventListener("animationend", function handler() {
+                menu.style.animationPlayState = "paused";
+                menu.style.height = "calc(60vh + 7px)";
+                menu.removeEventListener("animationend", handler);
+            });
+        } else {
+            menu.style.animationName = "reducir";
+            menu.style.animationPlayState = "running";
+            menu.addEventListener("animationend", function handler() {
+                menu.style.display = "none";
+                menu.style.height = "0px";
+                menu.removeEventListener("animationend", handler);
+            });
+        }
+    };
+
+    return (
+        <>
+        <div className="antesHeader">
+            <div className="antesIzq">
+                <a href="https://kleosatl.com/" target="_blank"><img className="antesImg" src="/patrocinador1.png" alt="" /></a>
+                
+            </div>
+            <div className="antesCen"><img className='antesImg' src="/fedevolei.png" alt="" /></div>
+            <div className="antesDer">
+                <a href="https://www.instagram.com/molten.colombia/?hl=en" target="_blank"><img className="antesImg" src="/patrocinador4.png" alt="" /></a>
+            </div>
         </div>
-        <div className="headerDer">
-        <div className="imagesGrid">
-            <a href="https://www.facebook.com/lisanvolei" target="_blank">
+            <header>
+                <div className="headerIzq">
+                    <Link to="/"><img src="/logo.png" alt="" /></Link>
+                </div>
+
+                <div className="indice headerCen desaparecer">
+                    <Link to="/"><p>Inicio</p></Link>
+                    <Link to="/news"><p>Noticias</p></Link>
+                    <Link to=""><p>Equipos</p></Link>
+                    <Link to=""><p>Contacto</p></Link>
+                    <Link to="/documentos-DIAN-RTE-2024" ><p>DIAN 2024</p></Link>
+                </div>
+
+                <div className="headerDer">
+                
+                <div className="imagesGrid">
+                <div className="paleta" onClick={cambio} style={{marginRight:"30px"}}>
+                
+            <svg className="moon" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" width={24} height={24} color={"#ffffff"} fill={"none"}>
+    <path d="M21.5 14.0784C20.3003 14.7189 18.9301 15.0821 17.4751 15.0821C12.7491 15.0821 8.91792 11.2509 8.91792 6.52485C8.91792 5.06986 9.28105 3.69968 9.92163 2.5C5.66765 3.49698 2.5 7.31513 2.5 11.8731C2.5 17.1899 6.8101 21.5 12.1269 21.5C16.6849 21.5 20.503 18.3324 21.5 14.0784Z" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round" />
+</svg>
+<svg className='sun' xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" width={24} height={24} color={"#ffffff"} fill={"none"}>
+    <path d="M17 12C17 14.7614 14.7614 17 12 17C9.23858 17 7 14.7614 7 12C7 9.23858 9.23858 7 12 7C14.7614 7 17 9.23858 17 12Z" stroke="currentColor" strokeWidth="1.5" />
+    <path d="M12 2C11.6227 2.33333 11.0945 3.2 12 4M12 20C12.3773 20.3333 12.9055 21.2 12 22M19.5 4.50271C18.9685 4.46982 17.9253 4.72293 18.0042 5.99847M5.49576 17.5C5.52865 18.0315 5.27555 19.0747 4 18.9958M5.00271 4.5C4.96979 5.03202 5.22315 6.0763 6.5 5.99729M18 17.5026C18.5315 17.4715 19.5747 17.7108 19.4958 18.9168M22 12C21.6667 11.6227 20.8 11.0945 20 12M4 11.5C3.66667 11.8773 2.8 12.4055 2 11.5" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" />
+</svg>       
+            </div>
+            <a href="https://www.facebook.com/VoleiColombia" target="_blank">
             <div className="socialContainer facebook">
             <svg className="social imgFooter" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" width={24} height={24} color={"#ffffff"} fill={"none"}>
                 <path fillRule="evenodd" clipRule="evenodd" d="M6.18182 10.3333C5.20406 10.3333 5 10.5252 5 11.4444V13.1111C5 14.0304 5.20406 14.2222 6.18182 14.2222H8.54545V20.8889C8.54545 21.8081 8.74951 22 9.72727 22H12.0909C13.0687 22 13.2727 21.8081 13.2727 20.8889V14.2222H15.9267C16.6683 14.2222 16.8594 14.0867 17.0631 13.4164L17.5696 11.7497C17.9185 10.6014 17.7035 10.3333 16.4332 10.3333H13.2727V7.55556C13.2727 6.94191 13.8018 6.44444 14.4545 6.44444H17.8182C18.7959 6.44444 19 6.25259 19 5.33333V3.11111C19 2.19185 18.7959 2 17.8182 2H14.4545C11.191 2 8.54545 4.48731 8.54545 7.55556V10.3333H6.18182Z" stroke="currentColor" strokeWidth="1.5" strokeLinejoin="round" />
             </svg>
             </div>
             </a>
-            <a href="https://www.linkedin.com/in/ivan-gomez-79053425a?utm_source=share&utm_campaign=share_via&utm_content=profile&utm_medium=android_app" target="_blank">
-            <div className="socialContainer tiktok">
-                      <svg className="social imgFooter" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" width={24} height={24} color={"#ffffff"} fill={"none"}>
-              <path d="M2.5 12C2.5 7.52166 2.5 5.28249 3.89124 3.89124C5.28249 2.5 7.52166 2.5 12 2.5C16.4783 2.5 18.7175 2.5 20.1088 3.89124C21.5 5.28249 21.5 7.52166 21.5 12C21.5 16.4783 21.5 18.7175 20.1088 20.1088C18.7175 21.5 16.4783 21.5 12 21.5C7.52166 21.5 5.28249 21.5 3.89124 20.1088C2.5 18.7175 2.5 16.4783 2.5 12Z" stroke="currentColor" strokeWidth="1.5" strokeLinejoin="round" />
-              <path d="M10.5359 11.0075C9.71585 10.8916 7.84666 11.0834 6.93011 12.7782C6.01355 14.4729 6.9373 16.2368 7.51374 16.9069C8.08298 17.5338 9.89226 18.721 11.8114 17.5619C12.2871 17.2746 12.8797 17.0603 13.552 14.8153L13.4738 5.98145C13.3441 6.95419 14.4186 9.23575 17.478 9.5057" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round" />
-          </svg>
+            <a href="https://twitter.com/voleicolombia?lang=en" target="_blank">
+            <div className="socialContainer X">
+            <svg className="social imgFooter"xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" width={24} height={24} color={"#ffffff"} fill={"none"}>
+    <path d="M3 21L10.5484 13.4516M21 3L13.4516 10.5484M13.4516 10.5484L8 3H3L10.5484 13.4516M13.4516 10.5484L21 21H16L10.5484 13.4516" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round" />
+</svg>
               </div>
               </a>
-            <a href="https://www.instagram.com/ivangomez_012?igsh=cGR4MGx1eWRtanBh" target="_blank">
+            <a href="https://www.instagram.com/voleicolombia/?hl=en" target="_blank">
             <div className="socialContainer instagram">
               <svg className="social imgFooter" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" width={24} height={24} color={"#ffffff"} fill={"none"}>
                 <path d="M17.5 2H6.5C4.01472 2 2 4.01472 2 6.5V17.5C2 19.9853 4.01472 22 6.5 22H17.5C19.9853 22 22 19.9853 22 17.5V6.5C22 4.01472 19.9853 2 17.5 2Z" stroke="currentColor" strokeWidth="1.5" />
@@ -104,14 +114,17 @@ const abrirMenu = () => {
               </svg>
             </div>
             </a>
-            <div className="socialContainer discord" href="">
-                <svg className="social imgFooter" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" width={24} height={24} color={"#000000"} fill={"none"}>
-                    <path d="M15.5008 17.75L16.7942 19.5205C16.9156 19.7127 17.1489 19.7985 17.3619 19.7224C18.1657 19.4353 20.158 18.6572 21.7984 17.4725C21.9263 17.3801 22.0002 17.2261 21.9992 17.0673C21.9992 8.25 19.5008 5.75 19.5008 5.75C19.5008 5.75 17.5008 4.60213 15.3547 4.25602C15.1436 4.22196 14.9368 4.33509 14.8429 4.52891L14.3979 5.44677C14.3979 5.44677 13.2853 5.21397 12 5.21397C10.7147 5.21397 9.6021 5.44677 9.6021 5.44677L9.15711 4.52891C9.06314 4.33509 8.85644 4.22196 8.64529 4.25602C6.50079 4.60187 4.50079 5.75 4.50079 5.75C4.50079 5.75 2.0008 8.25 2.0008 17.0673C1.9998 17.2261 2.07365 17.3801 2.20159 17.4725C3.84196 18.6572 5.8343 19.4353 6.63806 19.7224C6.85105 19.7985 7.08437 19.7127 7.20582 19.5205L8.50079 17.75" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round" />
-                    <path d="M17.5008 16.75C17.5008 16.75 15.2057 18.25 12.0008 18.25C8.79587 18.25 6.50079 16.75 6.50079 16.75" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round" />
-                    <path d="M17.2508 12.25C17.2508 13.3546 16.4673 14.25 15.5008 14.25C14.5343 14.25 13.7508 13.3546 13.7508 12.25C13.7508 11.1454 14.5343 10.25 15.5008 10.25C16.4673 10.25 17.2508 11.1454 17.2508 12.25Z" stroke="currentColor" strokeWidth="1.5" />
-                    <path d="M10.2508 12.25C10.2508 13.3546 9.46729 14.25 8.50079 14.25C7.5343 14.25 6.75079 13.3546 6.75079 12.25C6.75079 11.1454 7.5343 10.25 8.50079 10.25C9.46729 10.25 10.2508 11.1454 10.2508 12.25Z" stroke="currentColor" strokeWidth="1.5" />
-                </svg>
+            <a href="https://www.youtube.com/@FedevoleiColombia">
+            <div className="socialContainer youtube" href="">
+                <svg className="social imgFooter" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" width={24} height={24} color={"#ffffff"} fill={"none"}>
+    <path d="M12 20.5C13.8097 20.5 15.5451 20.3212 17.1534 19.9934C19.1623 19.5839 20.1668 19.3791 21.0834 18.2006C22 17.0221 22 15.6693 22 12.9635V11.0365C22 8.33073 22 6.97787 21.0834 5.79937C20.1668 4.62088 19.1623 4.41613 17.1534 4.00662C15.5451 3.67877 13.8097 3.5 12 3.5C10.1903 3.5 8.45489 3.67877 6.84656 4.00662C4.83766 4.41613 3.83321 4.62088 2.9166 5.79937C2 6.97787 2 8.33073 2 11.0365V12.9635C2 15.6693 2 17.0221 2.9166 18.2006C3.83321 19.3791 4.83766 19.5839 6.84656 19.9934C8.45489 20.3212 10.1903 20.5 12 20.5Z" stroke="currentColor" strokeWidth="1.5" />
+    <path d="M15.9621 12.3129C15.8137 12.9187 15.0241 13.3538 13.4449 14.2241C11.7272 15.1705 10.8684 15.6438 10.1728 15.4615C9.9372 15.3997 9.7202 15.2911 9.53799 15.1438C9 14.7089 9 13.8059 9 12C9 10.1941 9 9.29112 9.53799 8.85618C9.7202 8.70886 9.9372 8.60029 10.1728 8.53854C10.8684 8.35621 11.7272 8.82945 13.4449 9.77593C15.0241 10.6462 15.8137 11.0813 15.9621 11.6871C16.0126 11.8933 16.0126 12.1067 15.9621 12.3129Z" stroke="currentColor" strokeWidth="1.5" strokeLinejoin="round" />
+</svg>
             </div>
+            </a>
+            
+            
+
             </div>
         </div>
         <svg className="hamburger" onClick={abrirMenu} xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" width={50} height={50} color={"#000000"} fill={"none"}>
@@ -127,25 +140,33 @@ const abrirMenu = () => {
     <div className="indice pestañas"><Link  to="/news">Noticias</Link></div>
     <div className="indice pestañas"><Link  to="">Equipos</Link></div>
     <div className="indice pestañas"><Link  to="">Contacto</Link></div>
-
+    <div className="indice pestañas"><Link to="/documentos-DIAN-RTE-2024" >DIAN 2024</Link></div>
     <div className="headerDer pestañas">
     <div className="imagesGrid">
-            <a href="https://www.facebook.com/lisanvolei" target="_blank">
+        <div className="paleta" onClick={cambio}>
+        <svg className="moon" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" width={24} height={24} color={"#ffffff"} fill={"none"}>
+    <path d="M21.5 14.0784C20.3003 14.7189 18.9301 15.0821 17.4751 15.0821C12.7491 15.0821 8.91792 11.2509 8.91792 6.52485C8.91792 5.06986 9.28105 3.69968 9.92163 2.5C5.66765 3.49698 2.5 7.31513 2.5 11.8731C2.5 17.1899 6.8101 21.5 12.1269 21.5C16.6849 21.5 20.503 18.3324 21.5 14.0784Z" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round" />
+</svg>
+<svg className='sun' xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" width={24} height={24} color={"#ffffff"} fill={"none"}>
+    <path d="M17 12C17 14.7614 14.7614 17 12 17C9.23858 17 7 14.7614 7 12C7 9.23858 9.23858 7 12 7C14.7614 7 17 9.23858 17 12Z" stroke="currentColor" strokeWidth="1.5" />
+    <path d="M12 2C11.6227 2.33333 11.0945 3.2 12 4M12 20C12.3773 20.3333 12.9055 21.2 12 22M19.5 4.50271C18.9685 4.46982 17.9253 4.72293 18.0042 5.99847M5.49576 17.5C5.52865 18.0315 5.27555 19.0747 4 18.9958M5.00271 4.5C4.96979 5.03202 5.22315 6.0763 6.5 5.99729M18 17.5026C18.5315 17.4715 19.5747 17.7108 19.4958 18.9168M22 12C21.6667 11.6227 20.8 11.0945 20 12M4 11.5C3.66667 11.8773 2.8 12.4055 2 11.5" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" />
+</svg>       
+        </div>
+            <a href="https://www.facebook.com/VoleiColombia" target="_blank">
             <div className="socialContainer facebook">
             <svg className="social imgFooter" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" width={24} height={24} color={"#ffffff"} fill={"none"}>
                 <path fillRule="evenodd" clipRule="evenodd" d="M6.18182 10.3333C5.20406 10.3333 5 10.5252 5 11.4444V13.1111C5 14.0304 5.20406 14.2222 6.18182 14.2222H8.54545V20.8889C8.54545 21.8081 8.74951 22 9.72727 22H12.0909C13.0687 22 13.2727 21.8081 13.2727 20.8889V14.2222H15.9267C16.6683 14.2222 16.8594 14.0867 17.0631 13.4164L17.5696 11.7497C17.9185 10.6014 17.7035 10.3333 16.4332 10.3333H13.2727V7.55556C13.2727 6.94191 13.8018 6.44444 14.4545 6.44444H17.8182C18.7959 6.44444 19 6.25259 19 5.33333V3.11111C19 2.19185 18.7959 2 17.8182 2H14.4545C11.191 2 8.54545 4.48731 8.54545 7.55556V10.3333H6.18182Z" stroke="currentColor" strokeWidth="1.5" strokeLinejoin="round" />
             </svg>
             </div>
             </a>
-            <a href="https://www.linkedin.com/in/ivan-gomez-79053425a?utm_source=share&utm_campaign=share_via&utm_content=profile&utm_medium=android_app" target="_blank">
-            <div className="socialContainer tiktok">
-                      <svg className="social imgFooter" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" width={24} height={24} color={"#ffffff"} fill={"none"}>
-              <path d="M2.5 12C2.5 7.52166 2.5 5.28249 3.89124 3.89124C5.28249 2.5 7.52166 2.5 12 2.5C16.4783 2.5 18.7175 2.5 20.1088 3.89124C21.5 5.28249 21.5 7.52166 21.5 12C21.5 16.4783 21.5 18.7175 20.1088 20.1088C18.7175 21.5 16.4783 21.5 12 21.5C7.52166 21.5 5.28249 21.5 3.89124 20.1088C2.5 18.7175 2.5 16.4783 2.5 12Z" stroke="currentColor" strokeWidth="1.5" strokeLinejoin="round" />
-              <path d="M10.5359 11.0075C9.71585 10.8916 7.84666 11.0834 6.93011 12.7782C6.01355 14.4729 6.9373 16.2368 7.51374 16.9069C8.08298 17.5338 9.89226 18.721 11.8114 17.5619C12.2871 17.2746 12.8797 17.0603 13.552 14.8153L13.4738 5.98145C13.3441 6.95419 14.4186 9.23575 17.478 9.5057" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round" />
-          </svg>
+            <a href="https://twitter.com/voleicolombia?lang=en" target="_blank">
+            <div className="socialContainer X">
+            <svg className="social imgFooter"xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" width={24} height={24} color={"#ffffff"} fill={"none"}>
+    <path d="M3 21L10.5484 13.4516M21 3L13.4516 10.5484M13.4516 10.5484L8 3H3L10.5484 13.4516M13.4516 10.5484L21 21H16L10.5484 13.4516" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round" />
+</svg>
               </div>
               </a>
-            <a href="https://www.instagram.com/ivangomez_012?igsh=cGR4MGx1eWRtanBh" target="_blank">
+            <a href="https://www.instagram.com/voleicolombia/?hl=en" target="_blank">
             <div className="socialContainer instagram">
               <svg className="social imgFooter" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" width={24} height={24} color={"#ffffff"} fill={"none"}>
                 <path d="M17.5 2H6.5C4.01472 2 2 4.01472 2 6.5V17.5C2 19.9853 4.01472 22 6.5 22H17.5C19.9853 22 22 19.9853 22 17.5V6.5C22 4.01472 19.9853 2 17.5 2Z" stroke="currentColor" strokeWidth="1.5" />
@@ -154,17 +175,19 @@ const abrirMenu = () => {
               </svg>
             </div>
             </a>
-            <div className="socialContainer discord" href="">
-                <svg className="social imgFooter" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" width={24} height={24} color={"#000000"} fill={"none"}>
-                    <path d="M15.5008 17.75L16.7942 19.5205C16.9156 19.7127 17.1489 19.7985 17.3619 19.7224C18.1657 19.4353 20.158 18.6572 21.7984 17.4725C21.9263 17.3801 22.0002 17.2261 21.9992 17.0673C21.9992 8.25 19.5008 5.75 19.5008 5.75C19.5008 5.75 17.5008 4.60213 15.3547 4.25602C15.1436 4.22196 14.9368 4.33509 14.8429 4.52891L14.3979 5.44677C14.3979 5.44677 13.2853 5.21397 12 5.21397C10.7147 5.21397 9.6021 5.44677 9.6021 5.44677L9.15711 4.52891C9.06314 4.33509 8.85644 4.22196 8.64529 4.25602C6.50079 4.60187 4.50079 5.75 4.50079 5.75C4.50079 5.75 2.0008 8.25 2.0008 17.0673C1.9998 17.2261 2.07365 17.3801 2.20159 17.4725C3.84196 18.6572 5.8343 19.4353 6.63806 19.7224C6.85105 19.7985 7.08437 19.7127 7.20582 19.5205L8.50079 17.75" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round" />
-                    <path d="M17.5008 16.75C17.5008 16.75 15.2057 18.25 12.0008 18.25C8.79587 18.25 6.50079 16.75 6.50079 16.75" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round" />
-                    <path d="M17.2508 12.25C17.2508 13.3546 16.4673 14.25 15.5008 14.25C14.5343 14.25 13.7508 13.3546 13.7508 12.25C13.7508 11.1454 14.5343 10.25 15.5008 10.25C16.4673 10.25 17.2508 11.1454 17.2508 12.25Z" stroke="currentColor" strokeWidth="1.5" />
-                    <path d="M10.2508 12.25C10.2508 13.3546 9.46729 14.25 8.50079 14.25C7.5343 14.25 6.75079 13.3546 6.75079 12.25C6.75079 11.1454 7.5343 10.25 8.50079 10.25C9.46729 10.25 10.2508 11.1454 10.2508 12.25Z" stroke="currentColor" strokeWidth="1.5" />
-                </svg>
+            <a href="https://www.youtube.com/@FedevoleiColombia">
+            <div className="socialContainer youtube" href="">
+                <svg className="social imgFooter" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" width={24} height={24} color={"#ffffff"} fill={"none"}>
+    <path d="M12 20.5C13.8097 20.5 15.5451 20.3212 17.1534 19.9934C19.1623 19.5839 20.1668 19.3791 21.0834 18.2006C22 17.0221 22 15.6693 22 12.9635V11.0365C22 8.33073 22 6.97787 21.0834 5.79937C20.1668 4.62088 19.1623 4.41613 17.1534 4.00662C15.5451 3.67877 13.8097 3.5 12 3.5C10.1903 3.5 8.45489 3.67877 6.84656 4.00662C4.83766 4.41613 3.83321 4.62088 2.9166 5.79937C2 6.97787 2 8.33073 2 11.0365V12.9635C2 15.6693 2 17.0221 2.9166 18.2006C3.83321 19.3791 4.83766 19.5839 6.84656 19.9934C8.45489 20.3212 10.1903 20.5 12 20.5Z" stroke="currentColor" strokeWidth="1.5" />
+    <path d="M15.9621 12.3129C15.8137 12.9187 15.0241 13.3538 13.4449 14.2241C11.7272 15.1705 10.8684 15.6438 10.1728 15.4615C9.9372 15.3997 9.7202 15.2911 9.53799 15.1438C9 14.7089 9 13.8059 9 12C9 10.1941 9 9.29112 9.53799 8.85618C9.7202 8.70886 9.9372 8.60029 10.1728 8.53854C10.8684 8.35621 11.7272 8.82945 13.4449 9.77593C15.0241 10.6462 15.8137 11.0813 15.9621 11.6871C16.0126 11.8933 16.0126 12.1067 15.9621 12.3129Z" stroke="currentColor" strokeWidth="1.5" strokeLinejoin="round" />
+</svg>
             </div>
-            </div>
-          
-</div>
+            </a>
+            
+            
+          </div>
+          </div>
 
 </div></>
+    )
 }

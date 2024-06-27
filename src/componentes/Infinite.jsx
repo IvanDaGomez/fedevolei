@@ -1,7 +1,7 @@
 /* eslint-disable react/prop-types */
 import { useEffect, useRef, useState } from 'react';
 
-export default function InfiniteSlider({ photos }) {
+export default function InfiniteSlider({ photos, fondo, Links }) {
 
      
     const wrapperRef = useRef(null);
@@ -16,16 +16,21 @@ export default function InfiniteSlider({ photos }) {
     }, [photos]);
 
     return (
-        <div className="infiniteSlider">
+        <div className="infiniteSlider" style={{background:`${fondo}`}}>
             <div className="photoInfiniteWrapper" ref={wrapperRef}>
                 {photos.concat(photos).map((photo, index) => (
+                    <>
+                    
                     <img
+                        
                         key={index}
                         className={`photoInfinite ${hoveredIndex !== null && hoveredIndex !== index ? 'grayscale' : ''}`}
                         src={photo}
                         onMouseOver={() => setHoveredIndex(index)}
                         onMouseOut={() => setHoveredIndex(null)}
                     />
+                    
+                    </>
                 ))}
             </div>
         </div>

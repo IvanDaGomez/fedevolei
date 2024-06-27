@@ -1,3 +1,4 @@
+/* eslint-disable react/prop-types */
 import { useEffect, useRef } from "react";
 
 export default function PhotoSlider({ photos }) {
@@ -109,7 +110,9 @@ export default function PhotoSlider({ photos }) {
     <div className="container">
       <div className="slider-wrapper">
         <button ref={prevButtonRef} id="prev-slide" className="slide-button material-symbols-rounded">
-            {"<"}-
+        <svg style={{transform:"rotate(180deg)"}}xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" width={24} height={24} color={"#ffffff"} fill={"none"}>
+    <path d="M9.00005 6C9.00005 6 15 10.4189 15 12C15 13.5812 9 18 9 18" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round" />
+</svg>
         </button>
         <ul ref={imageListRef} className="image-list">
           {photos.map((photo, index) => (
@@ -117,7 +120,9 @@ export default function PhotoSlider({ photos }) {
           ))}
         </ul>
         <button ref={nextButtonRef} id="next-slide" className="slide-button material-symbols-rounded">
-          {"->"}
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" width={24} height={24} color={"#ffffff"} fill={"none"}>
+    <path d="M9.00005 6C9.00005 6 15 10.4189 15 12C15 13.5812 9 18 9 18" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round" />
+</svg>
         </button>
       </div>
       <div className="slider-scrollbar" ref={sliderScrollbarRef}>

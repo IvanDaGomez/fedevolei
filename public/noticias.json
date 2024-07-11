@@ -1,0 +1,36 @@
+
+
+[
+    {
+        
+        "titulo": "El ministerio del deporte ratifica el comité ejecutivo de la federación colombiana de voleibol.",
+        "descripcion": "El Ministerio del Deporte ha confirmado oficialmente la composición del nuevo comité ejecutivo de la Federación Colombiana de Voleibol. Esta ratificación asegura la continuidad en la dirección del deporte y el desarrollo de estrategias para fomentar el voleibol en el país. El comité estará encargado de supervisar y promover eventos, entrenamientos y programas de desarrollo para atletas en todas las categorías.",
+        "fecha": "24/06/2024",
+        "imagen": "fedevolei3.jpeg",
+        "numeroNoticia": "1",
+        "extra": [["files/Ratificacion.pdf", "Ratificación del comité ejecutivo"]]
+    },
+    {
+        "titulo": "Las selecciones Femenina y Masculina Mayores están clasificadas al mundial.",
+        "descripcion": "Las selecciones Femenina y Masculina Mayores han logrado clasificarse para el mundial de su categoría, un hito histórico para el deporte nacional. Este logro es el resultado de años de esfuerzo, dedicación y excelencia en sus respectivas competencias. Se han publicado los equipos que harán su debut en estos juegos, generando gran expectativa y orgullo entre los aficionados y la comunidad deportiva. Ambas selecciones están compuestas por atletas destacados que han demostrado su talento y compromiso en múltiples torneos internacionales. Los entrenadores y el cuerpo técnico están trabajando intensamente en la preparación final para asegurar un desempeño excepcional en la cita mundialista. La participación en este mundial representa una oportunidad única para demostrar el crecimiento y el nivel competitivo del voleibol nacional en el escenario deportivo más prestigioso del mundo.",
+        "fecha": "24/06/2024",
+        "imagen": "fedevolei5.jpeg",
+        "numeroNoticia": "2"
+    },
+    {
+        
+        "titulo": "Ya está listo el calendario del voleibol colombiano de 2024",
+        "descripcion": "El calendario para el año 2024 ha sido publicado con todos los eventos importantes. La Federación Colombiana de Voleibol ha anunciado un emocionante calendario lleno de competencias locales e internacionales que mantendrán a los aficionados al borde de sus asientos. Desde campeonatos nacionales hasta torneos internacionales, este año promete ser uno de los más emocionantes para el voleibol colombiano. Los eventos destacados incluyen la Liga Nacional de Voleibol, el Torneo Intercolegial, y varios encuentros amistosos con equipos de otros países. La publicación temprana del calendario permite a los equipos y a los jugadores prepararse adecuadamente, asegurando un alto nivel de competencia en cada partido. Además, se han anunciado nuevas sedes y mejoras en las infraestructuras para ofrecer una mejor experiencia tanto a los jugadores como a los aficionados. Mantente al tanto de las fechas y no te pierdas ningún partido de esta apasionante temporada.",
+        "fecha": "24/06/2024",
+        "imagen": "fedevolei4.jpeg",
+        "numeroNoticia": "3",
+        "extra": [["files/Circular Nº 13 - Calendario Nacional 2024 (1).pdf", "Calendario Nacional 2024"]]
+    },{
+        "titulo": "Resoluciones de los Clasificatorios a Juegos Deportivos Nacionales y Nacional Mayores",
+        "descripcion":"Las resoluciones de los clasificatorios para los Juegos Deportivos Nacionales y Nacional Mayores han sido finalizadas. Este importante paso garantiza que los juegos se lleven a cabo, en el que jugadores de todo el país demostrarán su destreza y habilidades en un evento que es fundamental tanto para el desarrollo deportivo nacional como para el reconocimiento de nuevos talentos emergentes.",
+        "fecha":"04/07/2024",
+        "imagen": "fedevolei12.jpeg",
+        "numeroNoticia":"4",
+        "extra":[["files/Resolucion Nº 11 - Clasificatorio Voleibol Playa I JNJ2024.pdf", "Resolución Clasificatorio Voleibol Playa"],["/files/Resolucion N°10 de 2024 - Clasificatorio a JDN 2024 Femenino.pdf", "Resolución Clasificatoria Femenino"],["files/Resolucion Nº 09 - LVIII Campeonato Mayores Masculino 2024.pdf", "Resolución Nacional Mayores Masculino"]]
+    }
+]

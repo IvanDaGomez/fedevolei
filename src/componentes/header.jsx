@@ -1,4 +1,5 @@
 
+import { useEffect, useRef } from 'react';
 import { Link } from 'react-router-dom';
 export default function Header() {
     const root = document.documentElement;
@@ -10,29 +11,34 @@ export default function Header() {
         localStorage.setItem('color', color); // Update local storage
 
     }
-    let color = localStorage.getItem('color') || "Claro"; // Default color
-    setColorPalette(color);
-
     const cambio =()=>{
 
         if (color === "Claro") {
             color="Oscuro";
-            document.querySelector(".moon").style.display = "block"
-            document.querySelector(".sun").style.display = "none"
+            document.querySelectorAll(".moon").forEach(s=>s.style.display = "block")
+            document.querySelectorAll(".sun").forEach(s=>s.style.display = "none")
             setColorPalette("Oscuro");
             
         } else {
             color="Claro"
-            document.querySelector(".moon").style.display = "none"
-            document.querySelector(".sun").style.display = "block"
+            document.querySelectorAll(".moon").forEach(s=>s.style.display = "none")
+            document.querySelectorAll(".sun").forEach(s=>s.style.display = "block")
             setColorPalette("Claro") 
             
         }}
+    let color = localStorage.getItem('color') || "Claro"; // Default color
+    setColorPalette(color);
+
+
+    
 
     const abrirMenu = () => {
         let menu = document.querySelector(".inhamburger");
-
+        let x = document.querySelector(".cerrar")
+        let hamburguer = document.querySelector(".abrir")
         if (menu.style.display === "none" || menu.style.display === "") {
+            x.style.display="block";
+            hamburguer.style.display = "none";
             menu.style.display = "flex";
             menu.style.height = "0px";
             menu.style.animationName = "agrandar";
@@ -43,6 +49,8 @@ export default function Header() {
                 menu.removeEventListener("animationend", handler);
             });
         } else {
+            x.style.display="none";
+            hamburguer.style.display = "block";
             menu.style.animationName = "reducir";
             menu.style.animationPlayState = "running";
             menu.addEventListener("animationend", function handler() {
@@ -52,6 +60,7 @@ export default function Header() {
             });
         }
     };
+
 
     return (
         <>
@@ -72,10 +81,10 @@ export default function Header() {
 
                 <div className="indice headerCen desaparecer">
                     <Link to="/"><p>Inicio</p></Link>
-                    <Link to="/news"><p>Noticias</p></Link>
-                    <Link to=""><p>Equipos</p></Link>
-                    <Link to=""><p>Contacto</p></Link>
-                    <Link to="/documentos-DIAN-RTE-2024" ><p>DIAN 2024</p></Link>
+                    <Link to="/noticias"><p>Noticias</p></Link>
+                    {/*<Link to=""><p>Equipos</p></Link>*/}
+                    <Link to="/contacto"><p>Contacto</p></Link>
+                    <Link to="/documentos-DIAN-RTE-2024" ><p>Documentos</p></Link>
                 </div>
 
                 <div className="headerDer">
@@ -127,20 +136,25 @@ export default function Header() {
 
             </div>
         </div>
-        <svg className="hamburger" onClick={abrirMenu} xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" width={50} height={50} color={"#000000"} fill={"none"}>
+        <div onClick={abrirMenu}   className="clickear" style={{height:"50px",width:"50px"}}>
+        <svg className="hamburger abrir"  xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" width={50} height={50} color={"#000000"} fill={"none"}>
     <path d="M4 5L20 5" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round" />
     <path d="M4 12L20 12" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round" />
     <path d="M4 19L20 19" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round" />
 </svg>
+<svg className="hamburger cerrar" style={{display:"none"}}xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" width={50} height={50} color={"#ffffff"} fill={"none"}>
+    <path d="M19.0005 4.99988L5.00045 18.9999M5.00045 4.99988L19.0005 18.9999" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round" />
+</svg>
+</div>
         
     </header>
-    <div className="inhamburger">
+    <div className="inhamburger" onMouseLeave={abrirMenu}>
 
     <div className="indice pestañas"><Link  to="/">Inicio</Link></div>
-    <div className="indice pestañas"><Link  to="/news">Noticias</Link></div>
-    <div className="indice pestañas"><Link  to="">Equipos</Link></div>
-    <div className="indice pestañas"><Link  to="">Contacto</Link></div>
-    <div className="indice pestañas"><Link to="/documentos-DIAN-RTE-2024" >DIAN 2024</Link></div>
+    <div className="indice pestañas"><Link  to="/noticias">Noticias</Link></div>
+    {/*<div className="indice pestañas"><Link  to="">Equipos</Link></div>*/}
+    <div className="indice pestañas"><Link  to="/contacto">Contacto</Link></div>
+    <div className="indice pestañas"><Link to="/documentos-DIAN-RTE-2024" >Documentos</Link></div>
     <div className="headerDer pestañas">
     <div className="imagesGrid">
         <div className="paleta" onClick={cambio}>

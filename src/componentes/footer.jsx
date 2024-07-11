@@ -4,10 +4,10 @@ export default function Footer() {
       <>
         <footer>
           <div className="footer-section">
-            <img className="fondo" style={{background: "rgba(255,255,255,0.8)", borderRadius:"5px"}}src="/fedevolei.png" alt="lisanvolei" />
+            <img className="fondo" src="/fedevolei.png" alt="lisanvolei" />
           </div>
           <div className="footer-section organizador">
-            <Link to="/documentos-DIAN-RTE-2024" className="link"><h3>Registros financieros</h3></Link>
+            <Link to="/documentos-DIAN-RTE-2024" className="link"><h3>Estados financieros</h3></Link>
             
           </div>
           <div className="footer-section">

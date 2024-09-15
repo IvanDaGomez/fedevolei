@@ -3,7 +3,7 @@ import { Link } from "react-router-dom";
 
 export default function CuerpoNoticias(){
     const [noticias, setNoticias] = useState([]);
-
+    
     useEffect(() => {
       const fetchNoticias = async () => {
         try {

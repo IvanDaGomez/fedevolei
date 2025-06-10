@@ -68,6 +68,210 @@ a{
   text-decoration: none;
   color:inherit;
 }
+@import url('https://fonts.googleapis.com/css2?family=Kanit:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Manrope:wght@200..800&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Gentium+Book+Plus:ital,wght@0,400;0,700;1,400;1,700&display=swap');
+:root {
+  --using1: #ffffff; /* Background */
+  --using2: #c4c3c4; /* Lines, separators, scrollbars */
+  --using3: #000000; /* Text color */
+  --using4: #3689e7; /* Accent */
+  --using7: #0258ba; /* Accent */
+  --using5: #f4f0f0; /* Buttons, divs */
+  --using6: red; /* Errores, acentos */
+  
+    /*-----VEREMOS: #42376E #2664ab*/
+  --naranja1: #ffffff; /* Background */
+  --naranja2: #f7f0f0; /* Lines, separators, scrollbars */
+  --naranja3: #252525; /* Text color */
+  --naranja4: #fa5f1a; /* Accent */
+  --naranja5: #ececec; /* Buttons, divs */
+  --naranja6: #f7f0f0; /* Extra */
+
+  --morado1: #ffffff; /* Background */
+  --morado2: #8e8894; /* Lines, separators, scrollbars */
+  --morado3: #000000; /* Text color */
+  --morado4: #42376E; /* Accent */
+  --morado5: #f4f0f0; /* Buttons, divs */
+  --morado6: #f4f0f0; /* Extra */
+
+  --lime1:#ffffff;
+  --lime2:#1e2029;
+  --lime3:#1e2029;
+  --lime4:#e0ff00;
+  --lime5:#E3E3E3;
+  --lime6:#d4d4d4;
+  
+  --padding-xsmall: calc(0.2rem + 0.1vw);
+  --padding-small: calc(var(--padding-xsmall) * 1.6);
+  --padding-medium: calc(var(--padding-small) * 1.6);
+  --padding-large: calc(var(--padding-medium) * 1.6);
+  --padding-xlarge: calc(var(--padding-large) * 1.6);
+
+  
+  --margin-xsmall: calc(0.2rem + 0.1vw);
+  --margin-small: calc(var(--margin-xsmall) * 1.6);
+  --margin-medium: calc(var(--margin-small) * 1.6);
+  --margin-large: calc(var(--margin-medium) * 1.6);
+  --margin-xlarge: calc(var(--margin-large) * 1.6);
+
+  --font-size-xsmall: calc(0.15rem + 0.2vw);
+  --font-size-small: calc(var(--font-size-xsmall) * 1.6);
+  --font-size-medium: calc(var(--font-size-small) * 1.6);
+  --font-size-large: calc(var(--font-size-medium) * 1.6);
+  --font-size-xlarge: calc(var(--font-size-large) * 1.6);
+
+  --border-width: calc(0.1rem + 0.05vw);
+  --unitary-border-width: 1px;
+  --border-radius: calc((0.2rem + 0.1vw) * 1.6 * 1.6);
+  --circular-radius: 1000px;
+  --animation-timing: 0.3s;
+
+  --mobile-breakpoint: 734px;
+  font-family: "sans-serif","Kanit", system-ui, Avenir, Helvetica, Arial, sans-serif;
+  line-height: 1.5;
+
+  font-weight: 400;
+  
+  color-scheme: light dark;
+  background-color: var(--morado5);
+  text-rendering: optimizeLegibility;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  content-visibility: auto;
+  scroll-behavior: smooth;
+  /*
+  A tener en cuenta:;
+  background-attachment: fixed; Evitar el scroll de fondo 
+  pointer-events: none; Evitar que se pueda seleccionar el texto y se seleccione de atras
+  
+  */
+}
+#root {
+  margin: 0 auto;
+  padding: 0;
+  text-align: center;
+}
+
+
+html {
+  -webkit-text-size-adjust: 100%; /* Prevents scaling */
+  text-size-adjust: 100%;          /* For other browsers */
+  height: 100% !important;
+}
+html, body {
+  overflow-y: auto !important;
+  overflow-x: hidden;
+  -webkit-overflow-scrolling: touch; /* Mejora en iOS */
+}
+body{
+  transition: all .5s ease-in-out;
+  height: 100%;
+
+}
+::selection {/* Cuando hay selección del texto */
+  background-color: var(--using4); /* Cambia el color de fondo */
+  color: white; /* Cambia el color del texto seleccionado */
+}
+*{
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+h1{
+  font-size: var(--font-size-xlarge);
+  
+}
+h2{
+  font-size: var(--font-size-large);
+  text-align: left;
+}
+div{
+  font-size: var(--font-size-medium);
+}
+h3{
+  font-size: var(--font-size-medium);
+}
+h4{
+  font-size: var(--font-size-small);
+}
+h6{
+  font-size: var(--font-size-xsmall);
+}
+p{
+  font-size: var(--font-size-medium);
+}
+s{
+  font-size: var(--font-size-small);
+}
+span{
+  font-size:var(--font-size-medium);
+}
+a{
+  font-size: var(--font-size-medium);
+  text-decoration: none;
+  color:inherit;
+}
+hr{
+  height:1px;
+  border:1px solid var(--using2);
+  margin-block:var(--margin-small);
+  width:100%;
+}
+
+svg{
+  color:var(--using3);
+  cursor:pointer;
+}
+
+button{
+  padding: var(--padding-small);
+  background: var(--using4);
+  border: var(--border-width) solid var(--using4);
+  color:var(--using1);
+  border:none;
+  border-radius: var(--border-radius);
+  font-size: var(--font-size-large);
+  font-weight: 600;
+  font-family: inherit;
+  cursor: pointer;
+  transition: all var(--animation-timing) ease-in-out;
+}
+button:hover{
+  background: var(--using7);
+}
+
+input {
+  all:unset;
+  font-size: var(--font-size-large);
+  font-family: inherit;
+  width: min(100%, 300px);
+  padding: var(--padding-small);
+  border: var(--border-width) solid var(--using2);
+  border-radius: var(--border-radius);
+  background-color: var(--using1);
+  color:var(--using3);
+}
+input:focus{
+  border: var(--border-width) solid var(--using4);
+}
+.error{
+  margin: auto;
+  margin-bottom: var(--margin-medium);
+  width:80%;
+  background-color: var(--using6) !important;
+  padding: var(--padding-small);
+  color:white !important;
+  border-radius: var(--border-radius);;
+}
+
+.red {
+  color:  red !important;
+}
+.accent {
+  color: var(--using4) !important;
+}
 @media only screen and (max-width:834px){
   h1{
     font-size: 4rem;

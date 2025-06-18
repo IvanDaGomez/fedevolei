@@ -8,6 +8,7 @@ import PhotoSlider from '../../componentes/PhotoSlider';
 import NoticiasInicio from "./noticiasInicio"
 import './App.css'
 import InfiniteSlider from '../../componentes/Infinite';
+import { useNavigate, useParams } from 'react-router-dom';
 
 export default function App() {
   
@@ -19,8 +20,17 @@ useEffect(() => {
 //-------------------------------USO DE LA PANTALLA DE CARGA---------------------------------------
 
 const [loading, setLoading] = useState(true);
-
-
+const navigate = useNavigate();
+const { dianString } = useParams();
+useEffect(() => {
+    if (dianString) {
+        const yearFromString = dianString.match(/\d{4}/);
+        if (yearFromString) {
+            navigate(`/documentos-DIAN-RTE/${yearFromString[0]}`);
+        }
+    }
+// eslint-disable-next-line react-hooks/exhaustive-deps
+}, [dianString]);
 
 useEffect(() => {
   // Simular una llamada a API u otra acción asincrónica

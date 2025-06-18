@@ -1,13 +1,25 @@
 import { useEffect, useState } from "react"
-import { useParams } from "react-router-dom";
+import { useParams, useNavigate } from "react-router-dom";
 import Footer from "../../componentes/footer";
 import Header from "../../componentes/header";
+
 export default function PaginaDIAN(){
     useEffect(() => {
         window.scrollTo(0, 0);
     }, []);
+    const navigate = useNavigate();
     const [files, setFiles] = useState([])
-    const { year } = useParams();
+    const { year, dianString } = useParams();
+    useEffect(() => {
+        if (dianString) {
+            const yearFromString = dianString.match(/\d{4}/);
+            if (yearFromString) {
+                setFiles([]);
+                navigate(`/documentos-DIAN-RTE/${yearFromString[0]}`);
+            }
+        }
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+    }, [dianString]);
     useEffect(() => {
         async function fetchFiles() {
             // Esta funcion obtiene los archivos de la carpeta del año especificado

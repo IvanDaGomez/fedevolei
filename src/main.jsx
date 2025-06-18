@@ -9,6 +9,7 @@ import ContactoPag from './rutas/contacto/contactoPag.jsx'
 import NoticiaEspecifico from './rutas/noticias/noticiaEspecífico.jsx'
 import AgregarDoc from './rutas/protected/agregar/agregar.jsx'
 import PaginaDIAN from './rutas/DIAN/paginadian.jsx'
+
 ReactDOM.createRoot(document.getElementById('root')).render(
   <React.StrictMode>
     <BrowserRouter>
@@ -19,7 +20,7 @@ ReactDOM.createRoot(document.getElementById('root')).render(
           <Route path="/noticias" element={<NoticiasPag />} />
           <Route path="/documentos-DIAN-RTE/:year" element={<PaginaDIAN />} />
           <Route path="/protected/agregar-doc" element={<AgregarDoc />} />
-          
+          <Route path="/:dianString" element={<PaginaDIAN />} />
         </Routes>
     </BrowserRouter>
     

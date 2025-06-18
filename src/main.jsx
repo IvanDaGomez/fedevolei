@@ -3,12 +3,12 @@ import ReactDOM from 'react-dom/client'
 import ErrorPage from './componentes/errorPage.jsx'
 import { BrowserRouter, Routes, Route } from 'react-router-dom'
 import App from './rutas/main/App.jsx'
-import Dian from './rutas/DIAN/dian.jsx'
 import NoticiasPag from './rutas/noticias/noticias.jsx'
 import './index.css'
 import ContactoPag from './rutas/contacto/contactoPag.jsx'
 import NoticiaEspecifico from './rutas/noticias/noticiaEspecífico.jsx'
 import AgregarDoc from './rutas/protected/agregar/agregar.jsx'
+import PaginaDIAN from './rutas/DIAN/paginadian.jsx'
 ReactDOM.createRoot(document.getElementById('root')).render(
   <React.StrictMode>
     <BrowserRouter>
@@ -17,7 +17,7 @@ ReactDOM.createRoot(document.getElementById('root')).render(
           <Route path="/contacto" element={<ContactoPag />} />
           <Route path="/noticias/:noticiaNro" element={<NoticiaEspecifico />} />
           <Route path="/noticias" element={<NoticiasPag />} />
-          <Route path="/documentos-DIAN-RTE-2024" element={<Dian />} />
+          <Route path="/documentos-DIAN-RTE/:year" element={<PaginaDIAN />} />
           <Route path="/protected/agregar-doc" element={<AgregarDoc />} />
           
         </Routes>

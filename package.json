@@ -10,11 +10,12 @@
     "lint": "eslint . --ext js,jsx --report-unused-disable-directives --max-warnings 0",
     "preview": "vite preview",
     "predeploy": "npm run build",
-    "deploy": "gh-pages -d build",
+    "deploy": "npm run build && aws s3 sync dist s3://www.fedevolei.com.co --delete",
     "hash": "node src/assets/hash.js"
   },
   "dependencies": {
     "@emailjs/browser": "^4.4.1",
+    "crypto-js": "^4.2.0",
     "react": "^18.3.1",
     "react-dom": "^18.3.1",
     "react-router-dom": "^7.6.2",

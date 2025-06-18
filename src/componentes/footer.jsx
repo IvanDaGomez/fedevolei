@@ -9,7 +9,7 @@ export default function Footer() {
           </div>
           <div className="footer-section organizador">
             <Link to="/documentos-DIAN-RTE-2024" className="link"><h3>Estados financieros</h3></Link>
-            
+            <Link to="/protected/agregar-doc" className="link"><h3>Agregar documentos</h3></Link>
           </div>
           <div className="footer-section">
             <h3>Contáctanos</h3>

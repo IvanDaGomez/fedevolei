@@ -83,7 +83,7 @@ export default function Header() {
                     <Link to="/noticias"><p>Noticias</p></Link>
                     {/*<Link to=""><p>Equipos</p></Link>*/}
                     <Link to="/contacto"><p>Contacto</p></Link>
-                    <a href={`/documentos-DIAN-RTE/${new Date().getFullYear()}`} ><p>Documentos</p></a>
+                    <Link to={`/documentos-DIAN-RTE/${new Date().getFullYear()}`} ><p>Documentos</p></Link>
                 </div>
 
                 <div className="headerDer">
@@ -153,7 +153,7 @@ export default function Header() {
     <div className="indice pestañas"><Link  to="/noticias">Noticias</Link></div>
     {/*<div className="indice pestañas"><Link  to="">Equipos</Link></div>*/}
     <div className="indice pestañas"><Link  to="/contacto">Contacto</Link></div>
-    <div className="indice pestañas"><a href={`/documentos-DIAN-RTE/${new Date().getFullYear()}`} >Documentos</a></div>
+    <div className="indice pestañas"><Link to={`/documentos-DIAN-RTE/${new Date().getFullYear()}`} >Documentos</Link></div>
     <div className="headerDer pestañas">
     <div className="imagesGrid">
         <div className="paleta" onClick={cambio}>

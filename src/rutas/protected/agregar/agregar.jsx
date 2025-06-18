@@ -35,36 +35,48 @@ export default function AgregarDoc() {
         }
         let success = true
         for (let selectedFile of selectedFiles) {
+            if (
+                !["pdf", "doc", "docx", "txt", "xlsx"].includes(
+                selectedFile.name.split(".").pop().toLowerCase()
+                )
+            ) {
+                toast.error("Por favor, sube un archivo con una extensión válida (pdf, doc, docx, txt, xlsx).")
+                return
+            }
+
             try {
-                if (
-                    !["pdf", "doc", "docx", "txt", "xlsx"].includes(
-                    selectedFile.name.split(".").pop().toLowerCase()
-                    )
-                ) {
-                    toast.error("Por favor, sube un archivo con una extensión válida (pdf, doc, docx, txt, xlsx).")
-                    return
-                }
+                const base64 = await new Promise((resolve, reject) => {
+                    const reader = new FileReader();
+                    reader.onload = () => {
+                        resolve(reader.result.split(',')[1]);
+                    };
+                    reader.onerror = reject;
+                    reader.readAsDataURL(selectedFile);
+                });
 
-                const formData = new FormData()
-                formData.append("file", selectedFile)
-                formData.append("name", selectedFile.name)
-                formData.append("year", date)
+                const payload = {
+                    filename: selectedFile.name,
+                    file_content: base64,
+                    year: date
+                };
 
-                const response = await fetch("https://fedevolei-backend.onrender.com/agregar-doc", {
+                const response = await fetch("https://abjay0s29b.execute-api.us-east-1.amazonaws.com/default/fedevoleiLambda", {
                     method: "POST",
-                    body: formData,
-                    
-                })
+                    headers: {
+                        "Content-Type": "application/json"
+                    },
+                    body: JSON.stringify(payload)
+                });
                 if (!response.ok) {
                     toast.error("Error al subir el archivo: " + selectedFile.name)
+                    const errorText = await response.text();
+                    console.error("Error response:", errorText);
                     success = false
-                    continue
                 }
             } catch (error) {
                 console.error("Error:", error)
                 toast.error("Error al subir el documento")
                 success = false
-                continue
             }
         }
         if (success) {

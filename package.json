@@ -10,7 +10,7 @@
     "lint": "eslint . --ext js,jsx --report-unused-disable-directives --max-warnings 0",
     "preview": "vite preview",
     "predeploy": "npm run build",
-    "deploy": "npm run build && aws s3 sync dist s3://www.fedevolei.com.co --delete",
+    "deploy": "aws s3 sync dist s3://www.fedevolei.com.co --delete",
     "hash": "node src/assets/hash.js"
   },
   "dependencies": {

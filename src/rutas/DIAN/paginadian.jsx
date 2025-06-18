@@ -14,14 +14,16 @@ export default function PaginaDIAN(){
             // y filtra los archivos que no son PDF, DOC, DOCX, TXT o XLSX
             // solo guarda en el estado el string con el path del archivo
             try {
-                const url = `/files/${year}/list.json`
+                const domain = window.location.hostname.includes('localhost')? "http://www.fedevolei.com.co.s3-website-sa-east-1.amazonaws.com" : "";
+                const url = `${domain}/files/${year}/list.json`
                 const response = await fetch(url);
                 if (!response.ok) {
                     throw new Error("Network response was not ok");
                 }
                 const data = await response.json();
-                // Filter only PDF files
-                const pdfFiles = data.filter(file => !["pdf", "doc", "docx", "txt", "xlsx"].includes(
+
+                //console.log("Archivos obtenidos:", data);
+                const pdfFiles = data.filter(file => ["pdf", "doc", "docx", "txt", "xlsx"].includes(
                     file.split(".").pop().toLowerCase())).reverse()
                 setFiles(pdfFiles);
             } catch (error) {

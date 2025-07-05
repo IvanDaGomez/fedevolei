@@ -1,17 +1,40 @@
-# FedeVolei
+# 🏐 FedeVolei – Official Website of the National Volleyball Federation of Colombia
 
-## Project Overview
-FedeVolei is a web application designed for the National Volleyball Federation. It provides news, information about teams and tournaments, and contact details for the federation. The platform is designed to be user-friendly and accessible, keeping volleyball enthusiasts up to date with the latest events and information.
+## 📌 Project Overview
 
-## Features
-- **Latest News**: Stay updated with the most recent news and announcements related to volleyball events.
-- **Team Information**: View details about national and regional volleyball teams.
-- **Tournament Schedule**: Browse upcoming tournaments, including dates, locations, and participating teams.
-- **Contact Page**: Easily get in touch with the National Volleyball Federation through the contact form.
-- **Responsive Design**: The site is fully responsive, ensuring an optimal experience on mobile and desktop devices.
+**FedeVolei** is the official web platform for the Colombian National Volleyball Federation. It was designed and developed to provide updated news, team details, tournament schedules, and contact information in an intuitive and mobile-friendly interface. The project was fully built and deployed by me with a focus on performance, accessibility, and responsiveness.
 
-## Tech Stack
-- **Frontend**: HTML, CSS, JavaScript, React
-- **Styling**: CSS Flexbox and Grid for layout, custom animations and transitions for enhanced user experience.
-- **JavaScript**: Used for dynamic content updates and interactivity.
-  
+## 🌟 Features
+
+- 📰 **Latest News**  
+  Stay informed with real-time updates and official announcements.
+
+- 🏐 **Team Information**  
+  Browse details about national and regional volleyball teams.
+
+- 🗓️ **Tournament Schedule**  
+  Explore upcoming tournaments with dates, venues, and participating teams.
+
+- ✉️ **Contact Page**  
+  Direct contact form to communicate with the federation.
+
+- 📱 **Responsive Design**  
+  Optimized for desktop, tablet, and mobile devices using flexible layouts.
+
+## 🛠️ Tech Stack
+
+- **Frontend**: HTML, CSS, JavaScript, React  
+- **Styling**: CSS Flexbox, Grid Layout, and custom transitions  
+- **Interactivity**: Vanilla JavaScript & React component logic  
+- **Deployment**:  
+  - **AWS S3** – Static site hosting  
+  - **AWS Route 53** – Custom domain and DNS management  
+  - **AWS CloudFront** – Global CDN for speed and reliability  
+
+## 👨‍💻 Role & Contributions
+
+- Designed the UI/UX from scratch  
+- Built the entire frontend using React and modern web standards  
+- Implemented responsive design for all screen sizes  
+- Deployed the site using AWS services (S3, CloudFront, Route 53)  
+- Managed content structure and SEO optimization

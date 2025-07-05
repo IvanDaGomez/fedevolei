@@ -2,7 +2,7 @@
 
 ## 📌 Project Overview
 
-**FedeVolei** is the official web platform for the Colombian National Volleyball Federation. It was designed and developed to provide updated news, team details, tournament schedules, and contact information in an intuitive and mobile-friendly interface. The project was fully built and deployed by me with a focus on performance, accessibility, and responsiveness. Link: [Fedevolei site](www.fedevolei.com.co)
+**FedeVolei** is the official web platform for the Colombian National Volleyball Federation. It was designed and developed to provide updated news, team details, tournament schedules, and contact information in an intuitive and mobile-friendly interface. The project was fully built and deployed by me with a focus on performance, accessibility, and responsiveness. Link: [Fedevolei site](https://www.fedevolei.com.co)
 
 
 ## 🌟 Features
